@@ -5,6 +5,9 @@ on: [push]
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      GOOD_HASH: e4cfc6f77ebbe2e23550ddab682316ab4ce1c03c
+      BAD_HASH: c1a4be04b972b6c17db242fc37752ad517c29402
     steps:
       - uses: actions/checkout@v3
         with:
@@ -17,5 +20,8 @@ jobs:
       - name: Install packages
         run: pip install -r requirements.txt
 
-      - name: Run tests
-        run: python manage.py test
+#      - name: Run tests
+#        run: python manage.py test
+
+      - name: Run git bisect via myscript.py
+        run: python myscript.py
